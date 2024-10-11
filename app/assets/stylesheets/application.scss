@@ -10,3 +10,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background-color: white;
+}
+
+#logo {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+}

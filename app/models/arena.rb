@@ -6,5 +6,7 @@ class Arena < ApplicationRecord
   validates :address, presence: true
   validates :address, uniqueness: true
   validates :price, presence: true
-  has_many_attached :photo
+  validates :description, presence: true
+  validates :description, length: { in: 10..500 }
+  has_one_attached :photo
 end
