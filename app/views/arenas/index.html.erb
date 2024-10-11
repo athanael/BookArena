@@ -13,7 +13,7 @@
                 <p class="card-price"><%= number_to_currency(arena.price, unit: "€", delimiter: " ", format: "%n %u") %> Par représentation</p>
                 <p class="card-text"><%= arena.description %></p>
                 <div class="mt-auto">
-                  <p class="card-text"><small class="text-muted">Créé il y a <%= time_ago_in_words(arena.created_at) %></small></p>
+                  <p class="card-text"><small class="text-muted">Créé il y a <%= time_ago_in_words(arena.created_at, locale: :fr) %></small></p>
                 </div>
               </div>
             </div>
