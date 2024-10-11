@@ -1,0 +1,7 @@
+<h1><%= @arena.name %></h1>
+<p>Localisation : <%= @arena.location %></p>
+<p>Capacité : <%= @arena.capacity %> personnes</p>
+<p>Description : <%= @arena.description %></p>
+
+<!-- Lien pour revenir à la liste des arènes -->
+<%= link_to 'Retour à la liste des arènes', arenas_path %>
