@@ -15,6 +15,11 @@
                 <div class="mt-auto">
                   <p class="card-text"><small class="text-muted">Créé il y a <%= time_ago_in_words(arena.created_at) %></small></p>
                 </div>
+                <!-- Lien pour voir les détails de l'arène -->
+                <div class="mt-2">
+                  <%= link_to 'Voir les détails', arena_path(arena), class: "btn btn-primary" %>
+                  <!-- Cela ajoute un bouton qui redirige vers la page show de l'arène -->
+                </div>
               </div>
             </div>
           </div>
