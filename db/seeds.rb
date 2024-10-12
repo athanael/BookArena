@@ -69,3 +69,7 @@ else
 end
 
 puts "Finished! Created #{User.count} users and #{Arena.count} arenas."
+
+User.create(first_name: 'Damien', last_name: 'Merian', category: 'band', email: 'damien@merian.com', password: 'password123')
+User.create(first_name: 'Imad', last_name: 'Belhadri', category: 'band', email: 'imad@belhadri.com', password: 'password321')
+
