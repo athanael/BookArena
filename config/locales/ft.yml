@@ -1,0 +1,18 @@
+fr:
+  datetime:
+    distance_in_words:
+      x_minutes:
+        one: "environ une minute"
+        other: "environ %{count} minutes"
+      about_x_hours:
+        one: "environ une heure"
+        other: "environ %{count} heures"
+      about_x_days:
+        one: "environ un jour"
+        other: "environ %{count} jours"
+      about_x_months:
+        one: "environ un mois"
+        other: "environ %{count} mois"
+      about_x_years:
+        one: "environ un an"
+        other: "environ %{count} ans"
