@@ -3,15 +3,20 @@
     BookArena
   </a>
   <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-    <li><a href="#" class="nav-link px-2 link-secondary"></a></li>
+    <li><%= link_to "Arenas", arenas_path , class: "nav-link px-2 link-secondary" %></li>
     <li><a href="#" class="nav-link px-2 link-dark"></a></li>
     <li><a href="#" class="nav-link px-2 link-dark"></a></li>
     <li><a href="#" class="nav-link px-2 link-dark"></a></li>
     <li><a href="#" class="nav-link px-2 link-dark"></a></li>
   </ul>
 
-  <div class="col-md-3 text-end">
-    <button type="button" class="btn btn-outline-primary me-2" id="sign-in"><%=link_to "Login", new_user_session_path%></button>
-    <button type="button" class="btn btn-primary" id="sign-up"><%=link_to "Sign-up", new_user_registration_path%></button>
+  <div class="col-md-3 text-end d-flex" id="buttons">
+    <% if user_signed_in? %>
+      <%= button_to "logout", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary me-2" %>
+      <button type="button" class="btn btn-primary" id="sign-up"><%=link_to "Profile", edit_user_registration_path%></button>
+    <% else %>
+      <button type="button" class="btn btn-outline-primary me-2" id="sign-in"><%=link_to "Login", new_user_session_path%></button>
+      <button type="button" class="btn btn-primary" id="sign-up"><%=link_to "Sign-up", new_user_registration_path%></button>
+    <% end %>
   </div>
 </header>
