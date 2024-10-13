@@ -11,7 +11,13 @@
               </div>
               <div class="col-md-8 d-flex flex-column">
                 <div class="d-flex card-body align-items-start flex-column">
-                  <h5 class="card-title"><%= arena.name %></h5>
+                  <div class="title-arena d-flex flex-direction: column justify-content-between align-items-center">
+                    <h5 class="card-title"><%= arena.name %></h5>
+                    <div class="owner d-flex align-items-center">
+                      <h5 class="me-3">Owned by :</h5>
+                      <%= cl_image_tag arena.user.photo.key, class: 'avatar-owner' %>
+                    </div>
+                  </div>
                   <p class="card-price"><%= number_to_currency(arena.price, unit: "€", delimiter: " ", format: "%n %u") %> Par représentation</p>
                   <p class="card-text"><%= arena.description %></p>
                   <div class="mt-auto">

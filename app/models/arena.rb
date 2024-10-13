@@ -1,5 +1,6 @@
 class Arena < ApplicationRecord
   belongs_to :user
+  has_many :bookings, dependent: :destroy
   validates :name, presence: true
   validates :name, length: { minimum: 2 }
   validates :capacity, presence: true

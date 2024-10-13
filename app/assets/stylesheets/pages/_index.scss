@@ -1,2 +1,16 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.title-arena
+{
+  width: 100%;
+}
+
+.avatar-owner
+{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
