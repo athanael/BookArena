@@ -20,3 +20,11 @@ body {
   font-weight: bold;
   font-size: 3em;
 }
+
+#sign-in a, #sign-up a {
+  text-decoration: none;
+}
+
+#sign-up a, #sign-in a:hover {
+  color: white;
+}
