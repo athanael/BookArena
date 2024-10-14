@@ -14,6 +14,7 @@ require 'open-uri'
 puts 'Cleaning database...'
 Arena.destroy_all
 User.destroy_all
+Booking.destroy_all
 
 puts 'Creating users...'
 
