@@ -1,0 +1,19 @@
+.arena-pic {
+  height: 70%;
+  width: 55%;
+  max-height: 600px;
+  max-width: 500px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.arena-name {
+  text-align: center;
+  font-weight: bold;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.buttons {
+  width: 100%;
+}
