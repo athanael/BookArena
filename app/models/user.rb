@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Associations
   has_many :bookings, dependent: :destroy
   has_one_attached :photo
-  has_one :arena
+  has_many :arenas, dependent: :destroy
 
   # Validations
   validates :first_name, :last_name, presence: true

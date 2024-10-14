@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="info">
+    <h1>Bienvenue sur BookArena</h1>
+    <h3>Il n'a jamais été aussi simple de démarrer votre carrière</h3>
+    <h3>Il n'a jamais été aussi simple de remplir vos salles</h3>
+  </div>
+  <div class="container text-center mt-5">
+    <div class="row justify-content-around">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag 'arena', alt: 'Une arena', class: 'card-img-top mt-2 radius' %>
+        <div class="card-body">
+          <h5 class="card-title">Je possède une salle</h5>
+          <p class="card-text">Je souhaite sans attendre mettre ma salle en location pour toucher des revenus</p>
+          <a href="#" class="btn btn-primary white">Louer</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <%= image_tag 'artiste', alt: 'Un artiste sur scène', class: 'card-img-top mt-2 radius' %>
+        <div class="card-body">
+          <h5 class="card-title">Je suis un artiste</h5>
+          <p class="card-text">Et je souhaite louer une salle afin de jouer dans des conditions profesionnelles</p>
+          <a href="/arenas" class="btn btn-primary white">Jouer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
