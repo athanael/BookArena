@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-danger text-white">
+      <h2>Annulation de votre prestation</h2>
+    </div>
+    <div class="card-body">
+      <p>Bonjour <%= @arena.user.first_name %>,</p>
+
+      <p>
+        Nous vous informons que la prestation de l’artiste
+        <strong><%= @artist.first_name %> <%= @artist.last_name %></strong> à la salle
+        <strong><%= @arena.name %></strong> a été annulée suite à la suppression de son compte.
+      </p>
+
+      <p>Nous sommes désolés pour ce désagrément. N’hésitez pas à nous contacter pour toute question.</p>
+
+      <p>Cordialement,<br>L'équipe BookArena</p>
+    </div>
+  </div>
+</div>
