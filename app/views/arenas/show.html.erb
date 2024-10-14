@@ -7,9 +7,12 @@
       <p>Capacité : <%= @arena.capacity %> personnes</p>
       <p>Description : <%= @arena.description %></p>
       <div class="buttons mt-auto d-flex justify-content-between">
-        <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary"%>
-        <%= link_to 'Réserver cette salle', "#", class: "btn btn-primary"%>
+        <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary" %>
+        <%= link_to 'Réserver cette salle', new_arena_booking_path(@arena), class: "btn btn-primary" %>
       </div>
     </div>
   </div>
+
+  <!-- Div pour le calendrier -->
+  <div id="calendar" data-arena-id="<%= @arena.id %>"></div>
 </div>
