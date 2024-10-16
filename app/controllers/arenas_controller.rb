@@ -18,6 +18,10 @@ class ArenasController < ApplicationController
       redirect_to new_user_session_path and return
     end
 
+    if current_user.category != 'owner'
+      flash[:alert] = "Vous devez être un propriétaire pour créer une arène."
+      redirect_to root_path and return
+    end
     @arena = Arena.new(arena_params)
     @arena.user = current_user
 
