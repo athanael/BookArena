@@ -2,13 +2,18 @@
   <h1 class="arena-name mb-5"><%= @arena.name %></h1>
   <div class="arena-details d-flex">
     <%= cl_image_tag @arena.photo.key, class: 'card-img-top arena-pic' %>
-    <div class="arena-meta ms-5 d-flex align-items-start flex-column mb-3">
+    <div class="ms-5 d-flex align-items-start flex-column mb-3" style="width: 100%;">
       <p>Localisation : <%= @arena.address %></p>
       <p>Capacité : <%= @arena.capacity %> personnes</p>
       <p>Description : <%= @arena.description %></p>
       <div class="buttons mt-auto d-flex justify-content-between">
-        <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary"%>
-        <%= link_to 'Réserver cette salle', "#", class: "btn btn-primary"%>
+        <% if user_signed_in? && current_user.id == @arena.user_id %>
+          <%= link_to 'Modifier cette salle', "#" , class: "btn btn-warning"%>
+          <%= link_to 'Supprimer cette salle', "#", class: "btn btn-danger"%>
+        <% else %>
+          <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary"%>
+          <%= link_to 'Réserver cette salle', "#", class: "btn btn-primary"%>
+        <% end %>
       </div>
     </div>
   </div>

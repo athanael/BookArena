@@ -7,36 +7,42 @@
       <%= f.input :first_name,
                   required: true,
                   autofocus: true,
-                  label: "First Name",
-                  input_html: { class: 'form-control', placeholder: 'Enter your first name' } %>
+                  label: "Votre prénom :",
+                  input_html: { class: 'form-control', placeholder: 'Jean' } %>
 
       <%= f.input :last_name,
                   required: true,
-                  label: "Last Name",
-                  input_html: { class: 'form-control', placeholder: 'Enter your last name' } %>
+                  label: "Votre nom de famille :",
+                  input_html: { class: 'form-control', placeholder: 'Gérard' } %>
 
       <%= f.input :category,
                   required: true,
-                  label: "Category",
-                  collection: ['Band', 'Owner', 'Admin'],
-                  prompt: 'Select your category',
+                  label: "Vous êtes un(e) ?",
+                  collection: [['Un(e) artist(e)', 'band'], ['Un(e) Propriétaire de salle' , 'owner']],
+                  prompt: 'Choissisez',
                   input_html: { class: 'form-select' } %>
 
       <%= f.input :email,
                   required: true,
-                  label: "Email",
-                  input_html: { class: 'form-control', autocomplete: "email", placeholder: 'Enter your email' } %>
+                  label: "Votre email :",
+                  input_html: { class: 'form-control', autocomplete: "email", placeholder: 'JeanGerard@gmail.com' } %>
 
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  label: "Password",
-                  input_html: { class: 'form-control', autocomplete: "new-password", placeholder: 'Enter your password' } %>
+                  label: "Votre mot de passe :",
+                  input_html: { class: 'form-control', autocomplete: "new-password", placeholder: 'Votre mot de passe ici' } %>
 
       <%= f.input :password_confirmation,
                   required: true,
-                  label: "Confirm Password",
-                  input_html: { class: 'form-control', autocomplete: "new-password", placeholder: 'Confirm your password' } %>
+                  label: "Confirmez votre mot de passe :",
+                  input_html: { class: 'form-control', autocomplete: "new-password", placeholder: 'Confirmez votre mot de passe ici' } %>
+
+      <%= f.input :photo,
+                  as: :file,
+                  required: true,
+                  label: "Votre photo de profil :",
+                  input_html: { class: 'form-control' } %>
     </div>
 
     <div class="form-actions mt-4">
