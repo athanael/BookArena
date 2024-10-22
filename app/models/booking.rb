@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   has_one :user
   belongs_to :arena
+  belongs_to :user
 
   validates :start, presence: true
   validates :end, presence: true
