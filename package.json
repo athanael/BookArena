@@ -1,4 +1,7 @@
 {
+  "scripts": {
+  "heroku-postbuild": "yarn install && yarn run build"
+  },
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
