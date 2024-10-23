@@ -1,4 +1,7 @@
 {
+  "scripts": {
+  "build": "webpack"
+  },
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
