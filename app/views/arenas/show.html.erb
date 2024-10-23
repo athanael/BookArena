@@ -10,7 +10,7 @@
       <div class="buttons mt-auto d-flex justify-content-between">
         <% if user_signed_in? && current_user.id == @arena.user_id %>
           <%= link_to 'Modifier cette salle', "#" , class: "btn btn-warning"%>
-          <%= button_to "Supprimer cette salle", arenas_mine_path(@arena), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ?" }, class: "btn btn-danger" %>
+          <%= button_to "Supprimer cette salle", arena_path(@arena), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ?" }, class: "btn btn-danger" %>
       </div>
       <div class="bookings mt-5">
         <h2>Réservations en cours</h2>

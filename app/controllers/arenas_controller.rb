@@ -2,6 +2,9 @@ class ArenasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
     @arenas = Arena.all
+    if current_user.category
+      redirect_to arenas_mine_path and return
+    end
   end
 
   def show
