@@ -11,6 +11,7 @@
         <%= render "owner_arenas_card" %>
       <% elsif user_signed_in? && current_user.category == "band" %>
         <%= render "artist_card" %>
+        <%= render "artist_books_card" %>
       <% else %>
         <%= render "owner_card" %>
         <%= render "artist_card" %>

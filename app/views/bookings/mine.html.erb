@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Mes réservations</h1>
+  <div class="row">
+    <% @bookings.each do | booking | %>
+      <div class="col">
+        <%= link_to arena_booking_path(booking) do %>
+          <h2 class="text-decoration-none">Réservation de <%= booking.arena.name %></h2>
+          <%= cl_image_tag booking.arena.photo.key, alt: "Arène ou j'ai réservé", style:"max-height: 200px;" %>
+          <p class="text-decoration-none">Du <%= booking.start %> au <%= booking.end %></p>
+          <p class="text-decoration-none">pour un montant total de <%= booking.total %> €</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

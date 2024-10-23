@@ -2,15 +2,19 @@
   <h1 class="arena-name mb-5"><%= @arena.name %></h1>
 
   <div class="arena-details d-flex">
-    <%= cl_image_tag @arena.photo.key, class: 'card-img-top arena-pic' %>
+    <%= cl_image_tag @arena.photo.key, class: 'card-img-top arena-pic', style:"max-height: 500px;" %>
     <div class="ms-5 d-flex align-items-start flex-column mb-3" style="width: 100%;">
       <p>Localisation : <%= @arena.address %></p>
       <p>Capacité : <%= @arena.capacity %> personnes</p>
       <p>Description : <%= @arena.description %></p>
       <div class="buttons mt-auto d-flex justify-content-between">
         <% if user_signed_in? && current_user.id == @arena.user_id %>
-          <%= link_to 'Modifier cette salle', "#" , class: "btn btn-warning"%>
+          <%= link_to 'Modifier cette salle', edit_arena_path(@arena) , class: "btn btn-warning"%>
           <%= button_to "Supprimer cette salle", arena_path(@arena), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ?" }, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary"%>
+          <%= link_to "Réserver cette salle", new_arena_booking_path(@arena), class: "btn btn-primary" %>
+        <% end %>
       </div>
       <div class="bookings mt-5">
         <h2>Réservations en cours</h2>
@@ -22,10 +26,6 @@
             <% @formated_end = @end.strftime("%d %B %Y") %>
             <p>La salle est réservée du <%= @formated_start %> au <%= @formated_end %></p>
           </div>
-        <% end %>
-        <% else %>
-          <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary"%>
-          <%= link_to "Réserver cette salle", new_arena_booking_path(@arena), class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     end
     @booking.total = @days * @arena.price
     if @booking.start < @now || @booking.end < @now
-      redirect_to arena_path(@arena), alert: "Vous ne pouvez pas réserver un créneau dans le passé."
+      redirect_to arena_path(@arena), alert: "Vous ne pouvez pas réserver un créneau dans le passé ou le jour même."
       return
     end
     if @booking.start > @booking.end
@@ -42,6 +42,20 @@ class BookingsController < ApplicationController
       @booking.save
     else render :new
     end
+  end
+
+  def mine
+    @bookings = Booking.where(user_id: current_user.id)
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to booking_mine_path, notice: 'La réservation a été supprimée avec succès.'
   end
 
   private

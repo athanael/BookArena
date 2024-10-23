@@ -2,7 +2,7 @@ class ArenasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
     @arenas = Arena.all
-    if current_user.category
+    if user_signed_in? && current_user.category == "owner"
       redirect_to arenas_mine_path and return
     end
   end
@@ -14,6 +14,19 @@ class ArenasController < ApplicationController
 
   def new
     @arena = Arena.new
+  end
+
+  def edit
+    @arena = set_arena
+  end
+
+  def update
+    @arena = set_arena
+    if @arena.update(arena_params)
+      redirect_to @arena, notice: 'Votre salle a été mise à jour avec succès.'
+    else
+      render :edit
+    end
   end
 
   def create

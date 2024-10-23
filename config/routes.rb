@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get 'arenas/mine', to: 'arenas#mine'
+  get 'booking/mine', to: 'bookings#mine'
+  get 'bookings/mine/:id', to: 'bookings#show', as: 'arena_booking'
+  delete 'bookings/mine/:id', to: 'bookings#destroy'
 
   resources :arenas, only: [:index, :show, :new, :create, :destroy]
   # Defines the root path route ("/")

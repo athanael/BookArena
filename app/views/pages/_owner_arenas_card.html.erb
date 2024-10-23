@@ -2,7 +2,7 @@
   <% if current_user.arenas.count == 0 %>
     <%= image_tag 'arena', alt: 'Une arena', class: 'card-img-top mt-2 radius' %>
   <% else %>
-    <%= cl_image_tag current_user.arenas.first.photo.key, class: 'card-img-top mt-2 radius', alt: 'Mon arena' %>
+    <%= cl_image_tag current_user.arenas.first.photo.key, class: 'card-img-top mt-2 radius', alt: 'Mon arena', style:"max-height:200px" %>
   <% end %>
   <div class="card-body">
     <h5 class="card-title">Voir mes salles</h5>

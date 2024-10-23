@@ -2,11 +2,8 @@
 
 <p>Cet arène est réservée du <%= @booking.start %> au <%= @booking.end %>.</p>
 
-<% if @booking.user.present? %>
-  <p>Cette réservation a été effectuée par <%= @booking.user.name %>.</p>
-<% else %>
-  <p>Ce créneau est disponible pour réservation.</p>
-  <%= link_to 'Réserver ce créneau', new_arena_booking_path(@arena, start: @booking.start, end: @booking.end), class: 'btn btn-primary' %>
-<% end %>
+<p>Le montant total de la réservation est de <%= @booking.total %> €.</p>
 
-<%= link_to 'Retour à la liste des réservations', arena_bookings_path(@arena), class: 'btn btn-secondary' %>
+
+<%= link_to 'Retour à la liste des réservations', booking_mine_path, class: 'btn btn-secondary' %>
+<%= button_to "Annuler cette réservation", arena_booking_path(@booking), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre réservation ?" }, class: "btn btn-danger" %>
