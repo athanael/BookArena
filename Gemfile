@@ -81,4 +81,4 @@ end
 
 gem 'devise'
 gem 'letter_opener'
-gem 'webpacker'
+gem 'webpacker', '~> 5.0'
