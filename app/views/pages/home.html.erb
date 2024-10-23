@@ -6,22 +6,14 @@
   </div>
   <div class="container text-center mt-5">
     <div class="row justify-content-around">
-      <div class="card" style="width: 18rem;">
-        <%= image_tag 'arena', alt: 'Une arena', class: 'card-img-top mt-2 radius' %>
-        <div class="card-body">
-          <h5 class="card-title">Je possède une salle</h5>
-          <p class="card-text">Je souhaite sans attendre mettre ma salle en location pour toucher des revenus</p>
-          <a href="/arenas/new" class="btn btn-primary white">Louer</a>
-        </div>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <%= image_tag 'artiste', alt: 'Un artiste sur scène', class: 'card-img-top mt-2 radius' %>
-        <div class="card-body">
-          <h5 class="card-title">Je suis un artiste</h5>
-          <p class="card-text">Et je souhaite louer une salle afin de jouer dans des conditions profesionnelles</p>
-          <a href="/arenas" class="btn btn-primary white">Jouer</a>
-        </div>
-      </div>
+      <% if user_signed_in? && current_user.category == "owner" %>
+        <%= render "owner_card" %>
+      <% elsif user_signed_in? && current_user.category == "band" %>
+        <%= render "artist_card" %>
+      <% else %>
+        <%= render "owner_card" %>
+        <%= render "artist_card" %>
+      <% end %>
     </div>
   </div>
 </div>
