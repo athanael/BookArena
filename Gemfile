@@ -80,3 +80,4 @@ end
 
 gem 'devise'
 gem 'letter_opener'
+gem 'webpacker'

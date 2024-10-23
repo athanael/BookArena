@@ -1,0 +1,12 @@
+<h1>Détails de la réservation</h1>
+
+<p>Cet arène est réservée du <%= @booking.start %> au <%= @booking.end %>.</p>
+
+<% if @booking.user.present? %>
+  <p>Cette réservation a été effectuée par <%= @booking.user.name %>.</p>
+<% else %>
+  <p>Ce créneau est disponible pour réservation.</p>
+  <%= link_to 'Réserver ce créneau', new_arena_booking_path(@arena, start: @booking.start, end: @booking.end), class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Retour à la liste des réservations', arena_bookings_path(@arena), class: 'btn btn-secondary' %>

@@ -1,0 +1,14 @@
+<%= form_with(model: [@arena, @booking], local: true) do |form| %>
+  <%= form.label :start, "Date de début" %>
+  <%= form.datetime_select :start %>
+
+  <%= form.label :end, "Date de fin" %>
+  <%= form.datetime_select :end %>
+
+  <%= form.label :total, "Montant total (€)" %>
+  <%= form.number_field :total %>
+
+  <%= form.hidden_field :status, value: "accepted" %>
+
+  <%= form.submit "Réserver" %>
+<% end %>
