@@ -1,0 +1,10 @@
+<h1>Réservations pour </h1>
+
+<% @bookings.each do |booking| %>
+  <div>
+    <p>Réservé du <%= booking.start %> au <%= booking.end %></p>
+    <%= link_to 'Voir les détails', arena_booking_path(@arena, booking), class: 'btn btn-info' %>
+  </div>
+<% end %>
+
+<%= link_to 'Réserver un créneau', new_arena_booking_path(@arena), class: 'btn btn-primary' %>
