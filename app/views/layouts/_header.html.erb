@@ -5,16 +5,16 @@
 
   <div class="col-md-3 text-end d-flex" id="buttons">
     <% if user_signed_in? %>
-      <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary me-2" %>
+      <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary me-2" %>
       <%= link_to edit_user_registration_path, class: "btn btn-primary" do %>
-        Profile
+        Mon profil
       <% end %>
     <% else %>
       <%= link_to new_user_session_path, class: "btn btn-outline-primary me-2" do %>
-        Login
+        Connexion
       <% end %>
       <%= link_to new_user_registration_path, class: "btn btn-primary me-2" do %>
-        Sign-up
+        S'enregistrer
       <% end %>
     <% end %>
   </div>
