@@ -11,9 +11,21 @@
         <% if user_signed_in? && current_user.id == @arena.user_id %>
           <%= link_to 'Modifier cette salle', "#" , class: "btn btn-warning"%>
           <%= button_to "Supprimer cette salle", arena_path(@arena), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer votre compte ?" }, class: "btn btn-danger" %>
+      </div>
+      <div class="bookings mt-5">
+        <h2>Réservations en cours</h2>
+        <% @bookings.each do | booking | %>
+          <div>
+            <% @start = Date.parse(booking.start.to_s) %>
+            <% @formated_start = @start.strftime("%d %B %Y") %>
+            <% @end = Date.parse(booking.end.to_s) %>
+            <% @formated_end = @end.strftime("%d %B %Y") %>
+            <p>La salle est réservée du <%= @formated_start %> au <%= @formated_end %></p>
+          </div>
+        <% end %>
         <% else %>
           <%= link_to 'Retour à la liste des arènes', arenas_path, class: "btn btn-primary"%>
-          <%= link_to 'Réserver cette salle', "#", class: "btn btn-primary"%>
+          <%= link_to "Réserver cette salle", new_arena_booking_path(@arena), class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

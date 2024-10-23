@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Page d'accueil
   root to: 'pages#home'
 
+  get 'arenas/mine', to: 'arenas#mine'
+
   resources :arenas, only: [:index, :show, :new, :create, :destroy]
   # Defines the root path route ("/")
   # root "posts#index"

@@ -1,0 +1,41 @@
+<div class="container">
+  <% @arenas.each do |arena| %>
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" style="max-width: 850px;">
+          <%= link_to arena_path(arena) do %>
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <!-- if no pics put a default one -->
+                <%= cl_image_tag arena.photo.key, class: 'card-img-top' %>
+              </div>
+              <div class="col-md-8 d-flex flex-column">
+                <div class="d-flex card-body align-items-start flex-column">
+                  <div class="title-arena d-flex flex-direction: column justify-content-between align-items-center">
+                    <h5 class="card-title"><%= arena.name %></h5>
+                    <div class="owner d-flex align-items-center">
+                      <h5 class="me-3">Owned by :</h5>
+                      <%= cl_image_tag arena.user.photo.key, class: 'avatar-owner' %>
+                    </div>
+                  </div>
+                  <p class="card-price"><%= number_to_currency(arena.price, unit: "€", delimiter: " ", format: "%n %u") %> Par représentation</p>
+                  <p class="card-text"><%= arena.description %></p>
+                  <div class="mt-auto">
+                    <p class="card-text"><small class="text-muted">Créé il y a <%= time_ago_in_words(arena.created_at, locale: :fr) %></small></p>
+                    <% if arena.bookings.count == 1 %>
+                      <p class="card-text"><small class="text-muted"><%= arena.bookings.count %> réservation en cours</small></p>
+                    <% elsif arena.bookings.count > 1 %>
+                      <p class="card-text"><small class="text-muted"><%= arena.bookings.count %> réservations en cours</small></p>
+                    <% else %>
+                      <p class="card-text"><small class="text-muted">Pas de réservation en cours</small></p>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

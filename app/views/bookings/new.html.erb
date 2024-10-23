@@ -1,14 +1,30 @@
-<%= form_with(model: [@arena, @booking], local: true) do |form| %>
-  <%= form.label :start, "Date de début" %>
-  <%= form.datetime_select :start %>
-
-  <%= form.label :end, "Date de fin" %>
-  <%= form.datetime_select :end %>
-
-  <%= form.label :total, "Montant total (€)" %>
-  <%= form.number_field :total %>
-
-  <%= form.hidden_field :status, value: "accepted" %>
-
-  <%= form.submit "Réserver" %>
-<% end %>
+<div class="container d-flex justify-content-between">
+  <div class="left">
+    <h2 class="mb-4">Réserver <%= @arena.name %></h2>
+    <%= form_with(model: [@arena, @booking], local: true) do |form| %>
+      <div>
+        <%= form.label :start, "Date de début" %>
+        <%= form.date_select :start, order: [:day, :month, :year] %>
+      </div>
+      <div>
+        <%= form.label :end, "Date de fin" %>
+        <%= form.date_select :end, order: [:day, :month, :year] %>
+      </div>
+      <%= form.hidden_field :status, value: "accepted" %>
+      <div>
+        <%= form.submit "Réserver", class: "btn btn-primary mt-4"%>
+      </div>
+    <% end %>
+  </div>
+  <div class="right">
+    <% @bookings.each do | booking | %>
+      <div>
+        <% @start = Date.parse(booking.start.to_s) %>
+        <% @formated_start = @start.strftime("%d %B %Y") %>
+        <% @end = Date.parse(booking.end.to_s) %>
+        <% @formated_end = @end.strftime("%d %B %Y") %>
+        <p>La salle est réservée du <%= @formated_start %> au <%= @formated_end %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -6,6 +6,7 @@ class ArenasController < ApplicationController
 
   def show
     @arena = set_arena
+    @bookings = Booking.where(arena_id: @arena.id)
   end
 
   def new
@@ -40,6 +41,9 @@ class ArenasController < ApplicationController
     redirect_to arenas_path, notice: 'La salle a été supprimée avec succès.'
   end
 
+  def mine
+    @arenas = current_user.arenas
+  end
 
   private
 

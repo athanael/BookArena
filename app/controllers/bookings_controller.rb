@@ -2,19 +2,44 @@ class BookingsController < ApplicationController
   before_action :set_arena, only: [:new, :create]
 
   def new
+    @bookings = Booking.where(arena_id: @arena.id)
     @booking = @arena.bookings.new
+    if current_user.nil?
+      flash[:alert] = "Vous devez être connecté pour réserver une salle."
+      redirect_to new_user_session_path and return
+    end
+    if current_user.category != 'band'
+      flash[:alert] = "Vous devez être un artiste pour réserver une salle."
+      redirect_to root_path and return
+    end
   end
 
   def create
+    @now = Time.current
     @booking = @arena.bookings.new(booking_params)
     @booking.user_id = current_user.id
     @booking.end = combine_date_time_params_end
     @booking.start = combine_date_time_params_start
+    @days = (@booking.end - @booking.start).to_i
+    if @days == 0
+      redirect_to arena_path(@arena), alert: "La réservation doit être d'au moins une journée."
+      return
+    end
+    @booking.total = @days * @arena.price
+    if @booking.start < @now || @booking.end < @now
+      redirect_to arena_path(@arena), alert: "Vous ne pouvez pas réserver un créneau dans le passé."
+      return
+    end
+    if @booking.start > @booking.end
+      redirect_to arena_path(@arena), alert: "La date de fin doit être postérieure à la date de début."
+      return
+    end
     if booking_exist?
       redirect_to arena_path(@arena), alert: "Ce créneau est déjà réservé."
       return
     end
     if redirect_to arena_path(@arena), notice: "Réservation effectuée avec succès."
+      @booking.save
     else render :new
     end
   end
